@@ -31,4 +31,14 @@ public class Start {
         wd.quit();
 
     }
+
+    @Test
+    public void LoginTest(){
+        wd=new ChromeDriver();
+        wd.navigate().to("https://contacts-app.tobbymarshall815.vercel.app/");
+        //
+        //
+        wd.quit();
+    }
+
 }
