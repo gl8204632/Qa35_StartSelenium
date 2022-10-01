@@ -53,7 +53,7 @@ public class Start {
         element.click();
 
         List<WebElement> list=  wd.findElements(By.tagName("h1"));
-       list.get(1); // finding webElement "HOMECOMPONENT" with index 1 , second element in collection List
+       //list.get(1); // finding webElement "HOMECOMPONENT" with index 1 , second element in collection List
         WebElement element1 = list.get(1); //HOMECOMPONENT
        element1.click();
 
@@ -63,6 +63,44 @@ public class Start {
         wd.findElement(By.id("root"));
         //by class
         wd.findElement(By.className("container"));
+
+        //by LinkText
+        wd.findElement(By.linkText("ABOUT"));
+        wd.findElement(By.partialLinkText("AB"));
+
+        //by name
+        wd.findElement(By.name("name"));
+        wd.findElement(By.name("surename"));
+
+        //by cssSelector
+        // by tagname
+        wd.findElement(By.cssSelector("h1"));
+        wd.findElement(By.cssSelector("a"));
+
+        //by id  # !!
+        wd.findElement(By.cssSelector("#root"));
+
+        // by class
+        wd.findElement(By.cssSelector(".container"));
+
+        //by attribute
+        wd.findElement(By.cssSelector("[href='/home']"));
+        wd.findElement(By.cssSelector("[href ^='/ho']"));   // starts with "ho"
+       // wd.findElement(By.cssSelector("[href *='om']"));     //containce "om"
+        wd.findElement(By.cssSelector("[href $='me']"));    // ends of "me"
+
+        wd.findElement(By.cssSelector("[href]"));
+
+       // wd.findElement(By.cssSelector("div#root.container"));
+       // wd.findElement(By.cssSelector("a[href='/home']"));
+
+
+        //by xpath
+
+        wd.quit();
+
+
+        
 
 
 
