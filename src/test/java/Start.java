@@ -69,8 +69,8 @@ public class Start {
         wd.findElement(By.partialLinkText("AB"));
 
         //by name
-        wd.findElement(By.name("name"));
-        wd.findElement(By.name("surename"));
+        //wd.findElement(By.name("name"));
+       // wd.findElement(By.name("surename"));
 
         //by cssSelector
         // by tagname
@@ -86,13 +86,13 @@ public class Start {
         //by attribute
         wd.findElement(By.cssSelector("[href='/home']"));
         wd.findElement(By.cssSelector("[href ^='/ho']"));   // starts with "ho"
-       // wd.findElement(By.cssSelector("[href *='om']"));     //containce "om"
+       wd.findElement(By.cssSelector("[href *='om']"));     //containce "om"
         wd.findElement(By.cssSelector("[href $='me']"));    // ends of "me"
 
         wd.findElement(By.cssSelector("[href]"));
 
-       // wd.findElement(By.cssSelector("div#root.container"));
-       // wd.findElement(By.cssSelector("a[href='/home']"));
+        wd.findElement(By.cssSelector("div#root.container"));
+        wd.findElement(By.cssSelector("a[href='/home']"));
 
 
         //by xpath
@@ -106,5 +106,10 @@ public class Start {
 
         wd.quit();
     }
+@Test
+    public void homework (){
+    wd= new ChromeDriver();
+        wd.navigate().to("file://Users//tayahatum/downloads/apk/index.htlm");
 
+    }
 }
