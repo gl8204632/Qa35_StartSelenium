@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Set;
 
 public class Tables {
     WebDriver wd;
@@ -39,8 +40,57 @@ public class Tables {
 
         wd.quit();
 
+        }
+
+        //HOMEWORK
+    @Test
+    public void Homework2() {
+        wd = new ChromeDriver();
+        wd.get("file:///C:/Users/Larisa/Downloads/index%20(1).html");
+
+        WebElement TypeName = wd.findElement(By.xpath("//input[@placeholder='Type your name']"));
+        TypeName.click();
+        TypeName.clear();
+        TypeName.sendKeys("Larisa");
+        TypeName.submit();
+
+        WebElement TypeSurename = wd.findElement(By.xpath("//input[@placeholder='Type your surename']"));
+        TypeSurename.click();
+        TypeSurename.clear();
+        TypeSurename.sendKeys("Gordon");
+        TypeSurename.submit();
+
+        // count columns
+
+        List<WebElement> CountColumns = wd.findElements(By.cssSelector("#country-table tr:first-child td"));
+        System.out.println("Number of columns is " + CountColumns.size());
+        Assert.assertEquals(CountColumns.size(),3);
+
+        // count rows
+
+        List<WebElement> CountRows =wd.findElements(By.cssSelector("#country-table tr"));
+        System.out.println("Number of rows is "+ CountRows.size());
+        Assert.assertEquals(CountRows.size(),4);
+
+        // print third row
+        WebElement Row3 = wd.findElement(By.cssSelector("#country-table tr:nth-child(3)"));
+        System.out.println(Row3.getText());
 
 
+        // print Israel
+        WebElement MyCountry = wd.findElement(By.cssSelector("#country-table tr:nth-child(2) td:nth-child(2)"));
+        System.out.println(MyCountry.getText());
+
+
+
+
+
+
+
+
+        wd.quit();
     }
+
+
 
 }
