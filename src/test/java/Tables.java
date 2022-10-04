@@ -23,10 +23,18 @@ public class Tables {
 
         // print last row
 
+        WebElement lastRow = wd.findElement(By.cssSelector("#customers tr:last-child"));
+        System.out.println(lastRow.getText());
+
         // print count of columns
+        List <WebElement> countColumns =wd.findElements(By.cssSelector("#customers th"));
+        System.out.println("count of columns  " + countColumns.size());
+        Assert.assertEquals(countColumns.size(),3);
 
         // print Canada
-
+        WebElement canada =wd.findElement(By.cssSelector("#customers tr:nth-child(6) td:last-child"));
+        System.out.println(canada.getText());
+        Assert.assertEquals(canada.getText(), "Canada");
 
 
         wd.quit();
