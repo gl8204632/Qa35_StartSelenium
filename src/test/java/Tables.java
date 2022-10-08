@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
 import java.util.Set;
 
@@ -48,43 +47,57 @@ public class Tables {
         wd = new ChromeDriver();
         wd.get("file:///C:/Users/Larisa/Downloads/index%20(1).html");
 
-        WebElement TypeName = wd.findElement(By.xpath("//input[@placeholder='Type your name']"));
-        TypeName.click();
-        TypeName.clear();
-        TypeName.sendKeys("Larisa");
-        TypeName.submit();
+        WebElement typeName = wd.findElement(By.xpath("//input[@placeholder='Type your name']"));
+        typeName.click();
+        typeName.clear();
+        typeName.sendKeys("Larisa");
+        typeName.submit();
 
-        WebElement TypeSurename = wd.findElement(By.xpath("//input[@placeholder='Type your surename']"));
-        TypeSurename.click();
-        TypeSurename.clear();
-        TypeSurename.sendKeys("Gordon");
-        TypeSurename.submit();
+        WebElement typeSurename = wd.findElement(By.xpath("//input[@placeholder='Type your surename']"));
+        typeSurename.click();
+        typeSurename.clear();
+        typeSurename.sendKeys("Gordon");
+        typeSurename.submit();
+
+
+
+
 
         // count columns
 
-        List<WebElement> CountColumns = wd.findElements(By.cssSelector("#country-table tr:first-child td"));
-        System.out.println("Number of columns is " + CountColumns.size());
-        Assert.assertEquals(CountColumns.size(),3);
+        List<WebElement> countColumns = wd.findElements(By.cssSelector("#country-table tr:first-child td"));//first way
+        System.out.println("Number of columns is " + countColumns.size());
+        Assert.assertEquals(countColumns.size(),3);
+
+        List<WebElement> countColumns2 = wd.findElements(By.xpath("//tr[1]/td"));//second way
 
         // count rows
 
-        List<WebElement> CountRows =wd.findElements(By.cssSelector("#country-table tr"));
-        System.out.println("Number of rows is "+ CountRows.size());
-        Assert.assertEquals(CountRows.size(),4);
+        List<WebElement> countRows =wd.findElements(By.cssSelector("#country-table tr"));//first way
+        System.out.println("Number of rows is "+ countRows.size());
+        Assert.assertEquals(countRows.size(),4);
+
+        List<WebElement> countRows2 = wd.findElements(By.xpath("//table[@id='country-table']//tr"));//second way
+                //   "//table[@id='country-table']/tbody/tr"
+                //   ("table#country-table>tbody>tr")
+                //   "//*[@id='country-table']/tbody/tr"
+                //    (#country-table tr")
+                //   "//tr"
 
         // print third row
-        WebElement Row3 = wd.findElement(By.cssSelector("#country-table tr:nth-child(3)"));
-        System.out.println(Row3.getText());
+        WebElement thirdRow = wd.findElement(By.cssSelector("#country-table tr:nth-child(3)"));//
+        WebElement thirdRow2= wd.findElement(By.xpath("//tr[3]"));
+        System.out.println(thirdRow.getText());
+        System.out.println(thirdRow2.getText());
+        Assert.assertEquals(thirdRow.getText(),"Germany Russia Canada");
 
 
         // print Israel
-        WebElement MyCountry = wd.findElement(By.cssSelector("#country-table tr:nth-child(2) td:nth-child(2)"));
-        System.out.println(MyCountry.getText());
+        WebElement myCountry = wd.findElement(By.cssSelector("#country-table tr:nth-child(2) td:nth-child(2)"));
+        System.out.println(myCountry.getText());
 
-
-
-
-
+        WebElement myCountry1 =wd.findElement(By.xpath("//tr[2]/td[2]"));
+        Assert.assertEquals(myCountry1.getText(),"Israel");
 
 
 
